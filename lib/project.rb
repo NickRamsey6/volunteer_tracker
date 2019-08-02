@@ -8,8 +8,13 @@ class Project
   end
 
   def title
-    result = DB.exec("INSERT INTO projects (name) VALUES ('#{@name}');")
-    @name = result.first().fetch("name")
+    returned_projects = DB.exec("SELECT * FROM projects;")
+    projects = []
+    returned_projects.each() do |project|
+      name = project.fetch("name")
+      projects.push(Project.new({:name => name}))
+    end
+    name
   end
 
   def self.clear
