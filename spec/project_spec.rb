@@ -10,7 +10,7 @@ describe Project do
       project = Project.new({:name => 'Teaching Kids to Code', :id => nil})
       expect(project.title).to eq 'Teaching Kids to Code'
     end
-  end
+  end 
 
   # context '#id' do
   #   it 'returns the id of the project before saving project' do
