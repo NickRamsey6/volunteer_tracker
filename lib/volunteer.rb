@@ -1,3 +1,3 @@
-class volunteer
+class Volunteer
 
 end
