@@ -54,17 +54,17 @@ describe Project do
       expect(Project.all).to eq [project]
     end
   end
-  #
-  # describe '.find' do
-  #   it 'returns a project by id' do
-  #     project1 = Project.new({:title => 'Teaching Kids to Code', :id => nil})
-  #     project1.save
-  #     project2 = Project.new({:title => 'Teaching Ruby to Kids', :id => nil})
-  #     project2.save
-  #     expect(Project.find(project1.id)).to eq project1
-  #   end
-  # end
-  #
+
+  describe '.find' do
+    it 'returns a project by id' do
+      project1 = Project.new({:name => 'Teaching Kids to Code', :id => nil})
+      project1.save
+      project2 = Project.new({:name => 'Teaching Ruby to Kids', :id => nil})
+      project2.save
+      expect(Project.find(project1.id)).to eq project1
+    end
+  end
+
   # describe '#volunteers' do
   #   it 'returns all volunteers for a specific project' do
   #     project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
@@ -76,22 +76,22 @@ describe Project do
   #     expect(project.volunteers).to eq [volunteer1, volunteer2]
   #   end
   # end
-  #
-  # describe '#update' do
-  #   it 'allows a user to update a project' do
-  #     project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
-  #     project.save
-  #     project.update({:title => 'Teaching Ruby to Kids', :id => nil})
-  #     expect(project.title).to eq 'Teaching Ruby to Kids'
-  #   end
-  # end
-  #
-  # context '#delete' do
-  #   it 'allows a user to delete a project' do
-  #     project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
-  #     project.save
-  #     project.delete
-  #     expect(Project.all).to eq []
-  #   end
-  # end
+
+  describe '#update' do
+    it 'allows a user to update a project' do
+      project = Project.new({:name => 'Teaching Kids to Code', :id => nil})
+      project.save
+      project.update('Teaching Ruby to Kids')
+      expect(project.name).to eq 'Teaching Ruby to Kids'
+    end
+  end
+
+  context '#delete' do
+    it 'allows a user to delete a project' do
+      project = Project.new({:name => 'Teaching Kids to Code', :id => nil})
+      project.save
+      project.delete
+      expect(Project.all).to eq []
+    end
+  end
 end

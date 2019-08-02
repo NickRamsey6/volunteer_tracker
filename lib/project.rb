@@ -15,7 +15,7 @@ class Project
       id = project.fetch("id")
       projects.push(Project.new({:name => name, :id => id}))
     end
-    return projects
+    projects
   end
 
   def self.find(id)
@@ -36,6 +36,15 @@ class Project
 
   def ==(project_to_compare)
     self.name() == project_to_compare.name()
+  end
+
+  def update(name)
+    @name = name
+    DB.exec("UPDATE projects SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
+  def delete
+    DB.exec("DELETE FROM projects WHERE id = #{@id};")
   end
 
 end
