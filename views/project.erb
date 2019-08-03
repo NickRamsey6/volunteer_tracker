@@ -1,0 +1,28 @@
+<h2>Project Name: <%= @project.name %></h2>
+
+<h3>Project Volunteers</h3>
+
+  <% if @project.volunteers %>
+    <ul>
+      <% @project.volunteers.each do |project| %>
+        <li><a href="/projects/<%= @project.id %>/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no volunteers listed for this project yet.</p>
+  <% end %>
+
+<h4>Add a volunteer:</h4>
+
+<form action="/projects/<%= @project.id %>/volunteers" method="post">
+  <div class="form-group">
+    <label for="volunteer_name">Volunteer name</label>
+    <input id="volunteer_name" name="volunteer_name" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Add a volunteer</button>
+</form>
+
+
+
+<p><a href="/projects/<%= @project.id %>/edit">Edit project</a></p>
+<p><a href="/projects">Return to project list</a></p>

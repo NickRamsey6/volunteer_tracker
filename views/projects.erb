@@ -1,0 +1,23 @@
+<h1>Mandatory Volunteering</h1>
+
+<h3>Current Projects</h3>
+
+<form action="/projects">
+  <div class="form-group">
+    <label for="search">Search</label>
+    <input id="search" name="search" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Search</button>
+</form>
+
+<% if @projects.any? %>
+  <ul>
+    <% @projects.each do |project| %>
+      <li><a href="/projects/<%= project.id %>"><%= project.name %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no projects to display.</p>
+<% end %>
+
+<a href="/projects/new">Add a new project</a>
